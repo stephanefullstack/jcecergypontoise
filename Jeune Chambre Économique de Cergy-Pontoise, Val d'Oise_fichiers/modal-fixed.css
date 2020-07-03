@@ -1,0 +1,156 @@
+/* Generic CSS for fixed popup*/
+
+.mc-modal-bg{
+    /* don't show modal bg for desktop */
+    display: none !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9995;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    background-color: #000;
+    animation: 1s opacityFade cubic-bezier(.35,.57,.4,.89);
+    opacity: .65;
+}
+
+@keyframes opacityFade {
+    from { opacity: 0; }
+    to { opacity: .65; }
+}
+
+.mc-layout__modalContent {
+    border-top: 1px solid #e0e0e0;
+    height: 100%;
+    display: block;
+    background: #FFFFFF;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch; /* Fix iOS scrolling bug */
+}
+
+.mc-layout__modalContent iframe {
+    display: block;
+}
+
+.mc-closeModal {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+}
+
+.mc-closeModal:before, .mc-closeModal:after {
+    background-color: #414141;
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 8px;
+    height: 14px;
+    width: 2px;
+}
+
+.mc-closeModal:before {
+    transform: rotate(45deg);
+}
+
+.mc-closeModal:after {
+    transform: rotate(-45deg);
+}
+
+/* Box sizing for all elements inside mc-modal */
+.mc-modal *{
+    box-sizing: border-box;
+}
+
+/* Modal basic styles */
+.mc-modal{
+    display: none;
+    /* Set higher than avg top nav index */
+    z-index: 9999;
+    position: fixed;
+    width: 100% !important;
+    background: transparent;
+    /* Stuff for fixed format */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: 500ms slideIn cubic-bezier(.35,.57,.4,.89);
+}
+
+@keyframes slideIn {
+    from { bottom: -500px; }
+    to { bottom: 0; }
+}
+
+.mc-modal--close {
+    animation: 500ms slideOut cubic-bezier(.35,.57,.4,.89);
+}
+
+@keyframes slideOut {
+    from { bottom: 0; }
+    to { bottom: -500px; }
+}
+
+/* Banner styles for mobile users */
+.mc-banner {
+    visibility: hidden;
+    /* Set lower than mc-modal */
+    z-index: 9998;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Media Queries */
+
+/* Hide modal and show optimized banner if mobile */
+@media only screen and (max-width : 768px) {
+    .mc-modal, .mc-modal-bg {
+        visibility: hidden;
+    }
+
+    .mc-modal{
+        display: none;
+        /* Move the modal to the back */
+        z-index: 9998;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        height: 100%;
+        background: transparent;
+    }
+
+    .mc-banner {
+        visibility: visible;
+        /* Move the banner to the front */
+        z-index: 9999;
+    }
+
+    .mc-modal-bg {
+        /* show modal bg for mobile */
+        display: block !important;
+    }
+
+    .mc-layout__modalContent {
+        border-radius: 0;
+        max-height: 100% !important;
+    }
+
+    .mc-closeModal {
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: none;
+        right: 10px;
+        top: 10px;
+    }
+}

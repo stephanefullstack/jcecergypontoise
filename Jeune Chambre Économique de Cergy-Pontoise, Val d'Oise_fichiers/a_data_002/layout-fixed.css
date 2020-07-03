@@ -1,0 +1,127 @@
+/***
+ * Layout Fixed *
+ ***/
+
+.modalContent {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    max-width: 800px;
+}
+.modalContent__content {
+    display: flex;
+    align-items: flex-start;
+    padding: 22px 18px;
+    margin: auto;
+}
+.content__titleDescription {
+    margin-right: 15px;
+    max-width: 400px;
+}
+.content__titleDescription > div{
+    line-height: 1em;
+    margin-bottom: 7px;
+}
+form {
+    display: flex;
+    flex-grow: 2;
+    align-items: flex-start;
+}
+label {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+.content__formFields {
+    margin-right: 15px;
+    min-width: 220px;
+    flex-grow: 2;
+}
+.content__button .button {
+    height: 36px;
+    width: 120px;
+}
+.content__formFields .field-wrapper input[type="email"] {
+    margin-bottom: 0;
+}
+/* Hide elements / Only shows email field */
+.modalContent__image,
+.content__formFields .field-wrapper:not(.email-field),
+.content__footer,
+.helpText
+{
+    display: none;
+}
+/* Validation Styles */
+.field-wrapper .invalid-error {
+    top: 0;
+}
+
+.field-wrapper {
+    margin: 0;
+}
+
+.content__monkeyRewards{
+    display:none;
+}
+
+.content__fixedBadge{
+    display: block;
+}
+.content__fixedBadge .content__monkeyRewards{
+    display: inline-block;
+    padding: 0;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+    .modalContent {
+        width: 100%;
+    }
+    .modalContent__content {
+        display: block;
+        clear:both;
+        padding: 30px;
+        width: 100%;
+    }
+    .content__titleDescription {
+        margin: 0;
+        max-width: 90%;
+        padding: 0;
+    }
+    .content__formFields {
+        margin-top: 20px;
+        margin-right: 0;
+        min-width: auto;
+    }
+    .content__formFields .field-wrapper input[type="email"] {
+        margin-bottom: 18px;
+    }
+    form {
+        display: block;
+    }
+    label {
+        position: static !important;
+        height: auto;
+        width: auto;
+        overflow: visible;
+        clip: auto;
+    }
+    .content__button {
+        margin-bottom: 20px;
+    }
+
+    .content__monkeyRewards{
+        display:block;
+        width: 100%;
+        padding: 30px;
+        padding-top: 0px;
+        text-align: left;
+    }
+
+    .content__fixedBadge{
+        display: none;
+    }
+}
